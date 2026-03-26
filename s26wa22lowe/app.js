@@ -24,6 +24,23 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/mydata', mydataRouter);
 
+// Create two variables
+var vOne = 10;
+var vTwo = 15;
+
+// Router callback function
+app.get('/compute', function(req, res) {
+  // Subtract smaller from larger and store in larger
+  if (vOne > vTwo) {
+    vOne = vOne - vTwo;
+  } else {
+    vTwo = vTwo - vOne;
+  }
+  
+  // Send response with values
+  res.send(`Values are: ${vOne} and ${vTwo}`);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
